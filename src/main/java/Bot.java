@@ -22,8 +22,8 @@ import java.util.Map;
 
 public class Bot extends TelegramLongPollingBot {
 
-    public static final String BOT_NAME = "vssupportjob_bot";
-    public static final String BOT_TOKEN = "1370423368:AAFpvAj-zo8MHaAzpuFa5fHcMsy5VGwE--o";
+    public static final String BOT_NAME = "";
+    public static final String BOT_TOKEN = "";
     BotPhrases bot;
     ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
     ReplyKeyboardRemove replyKeyboardRemove = new ReplyKeyboardRemove();
@@ -127,7 +127,6 @@ public class Bot extends TelegramLongPollingBot {
 
     }
 
-    @SuppressWarnings("deprecation") // Означает то, что в новых версиях метод уберут или заменят
     private void sendMsg(Message message, String text) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.enableMarkdown(true);

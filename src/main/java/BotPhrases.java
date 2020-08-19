@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 
 public class BotPhrases {
 
+    //int counterOfMessages = 0;
 
     final String[] COMMON_PHRASES = {
             "Я совсем ничего не понимаю( Расскажите мне, еще раз, пожалуйста, подробно, куда нажать чтобы все заработало.",
@@ -34,16 +35,16 @@ public class BotPhrases {
             "Зачем эта информация?",
             "Ох, молодой человек, я ничего в этом не понимаю",
             "А я могу не отвечать?"};
-    final Map<String, String> PATTERNS_FOR_ANALYSIS = new HashMap<String, String>() {{
+    final Map<String, String> KEY_PATTERNS_FOR_ANALYSIS = new HashMap<String, String>() {{
         // hello
-        put("хай", "hello");
-        put("привет", "hello");
-        put("здорово", "hello");
-        put("здравствуй", "hello");
-        put("здравствуйте", "hello");
-        put("добрый день", "hello");
-        put("доброе утро", "hello");
-        put("добрый вечер", "hello");
+//        put("хай", "hello");
+//        put("привет", "hello");
+//        put("здорово", "hello");
+//        put("здравствуй", "hello");
+//        put("здравствуйте", "hello");
+//        put("добрый день", "hello");
+//        put("доброе утро", "hello");
+//        put("добрый вечер", "hello");
         // who
         put("кто\\s.*ты", "who");
         put("ты\\s.*кто", "who");
@@ -94,20 +95,40 @@ public class BotPhrases {
         // router
         put("подключен\\s.*роутер", "router");
         put("роутер", "router");
-        put("коробочка\\s.*лампочками", "router");
-        put("коробка", "router");
-        put("лампочки", "router");
-        put("коробку", "router");
-        put("лампочками", "router");
+        //findRouter
+        put("коробочку", "findRouter");
+        put("коробочка", "findRouter");
+        put("коробка", "findRouter");
+        put("коробку", "findRouter");
+        put("оборудование", "findRouter");
+        put("устройство", "findRouter");
+        put("прибор", "findRouter");
+        put("штуковина", "findRouter");
         // restart
         put("перезагрузить\\s.*роутер", "restart");
         put("перезагрузить", "restart");
-        put("кнопку\\s.*нажать", "restart");
         put("перезагрузка", "restart");
         put("ресет", "restart");
         put("reset", "restart");
         put("выключить\\s.*нажать", "restart");
         put("выключить\\s.*включить", "restart");
+        put("перезагрузите\\s.*роутер", "restart");
+        put("перезагрузите\\s.*его", "restart");
+        //button
+        put("кнопку\\s.*нажать", "button");
+        put("кнопку\\s.*нажмите", "button");
+        put("кнопку\\s.*сбоку", "button");
+        put("кнопку\\s.*reset", "button");
+        put("кнопку\\s.*ресет", "button");
+        put("нажмите\\s.*кнопку", "button");
+        put("нажмите\\s.*сбоку", "button");
+        put("нажмите на\\s.*коробке", "button");
+        put("нажмите\\s.*reset", "button");
+        put("нажмите\\s.*ресет", "button");
+        put("нажмите\\s.*роутере", "button");
+        put("нажимайте\\s.*кнопку", "button");
+        put("нажимайте\\s.*ресет", "button");
+        put("нажимайте\\s.*reset", "button");
         //error
         put("какая\\s.*ошибка", "error");
         put("ошибка\\s.*какая", "error");
@@ -116,25 +137,89 @@ public class BotPhrases {
         put("ошибку\\s.*какую", "error");
         put("ошибку", "error");
         put("ошибки", "error");
-        //browser
-
-
+        //lamps
+        put("с\\s.*лампочками", "lamps");
+        put("лампочки", "lamps");
+        put("лампочками", "lamps");
+        put("лампочек", "lamps");
+        put("огонечки", "lamps");
+        put("огоньки", "lamps");
+        put("индикатор", "lamps");
+        //OS
+        put("операционная система", "OS");
+        put("система", "OS");
+        put("Виндоуз", "OS");
+        put("Windows", "OS");
+        //computer
+        put("компьютер", "computer");
+        put("системник", "computer");
+        put("какой\\s.*компьютер", "computer");
+        put("компьютер\\s.*какой", "computer");
+        //internetSettings
+        put("значок интернета", "internetSettings");
+        put("посмотрите\\s.*значок", "internetSettings");
+        put("правом\\s.*углу", "internetSettings");
+        put("значок\\s.*интернета", "internetSettings");
+        put("волны\\s.*точкой", "internetSettings");
+        put("волны\\s.*точечкой", "internetSettings");
+        put("полосы\\s.*точкой", "internetSettings");
+        put("полоски\\s.*точкой", "internetSettings");
+        put("полосы\\s.*точечкой", "internetSettings");
+        put("полоски\\s.*точечкой", "internetSettings");
+        //browserPage
+        put("не открывается сайт", "browserPage");
+        put("не открывается\\s.*сайт", "browserPage");
+        put("не открываются\\s.*сайты", "browserPage");
+        put("открываются\\s.*сайты", "browserPage");
+        put("открывается\\s.*сайт", "browserPage");
+        put("открывается\\s.*яндекс", "browserPage");
+        put("экране\\s.*сайт", "browserPage");
+        // finish
+        put("заработал?", "finish");
+        put("заработал\\s.*интернет?", "finish");
+        put("включился\\s.*интернет?", "finish");
+        put("получилось?", "finish");
+        //lastQuestions
+        put("вопросы?", "lastQuestions");
+        put("остались\\s.*вопросы?", "lastQuestions");
+        put("остались\\s.*вопросы", "lastQuestions");
+        put("есть\\s.*вопросы", "lastQuestions");
+        //pishet
+        put("пишет", "pishet");
+        put("что\\s.*пишет", "pishet");
+        //internetPayment
+        put("оплата", "internetPayment");
+        put("оплата\\s.*интернета", "internetPayment");
+        put("оплатили\\s.*интернет", "internetPayment");
+        put("оплаты\\s.*интернет", "internetPayment");
     }};
-    final Map<String, String> ANSWERS_BY_PATTERNS = new HashMap<String, String>() {{
-        put("hello", "Здравствуйте, рада Вас видеть.");
-        put("who", "Зинаида Петровна, приятно познакомиться. ");
-        put("name", "Зинаида я");
-        put("howareyou", "Спасибо, что интересуетесь. У меня всё хорошо.");
-        put("whatdoyoudoing", "Я пробую общаться с людьми.");
-        put("whatdoyoulike", "Мне нравиться думать что я не просто программа.");
-        put("iamfeelling", "Как давно это началось? Расскажите чуть подробнее.");
+    final Map<String, String> ANSWERS_BY_KEYS = new HashMap<String, String>() {{
+        //put("hello", "Здравствуйте");
+        put("who", "Меня зовут Зинаида Петровна. ");
+        put("name", "Зинаида");
+        //put("howareyou", "Спасибо, что интересуетесь. У меня всё хорошо.");
+        //put("whatdoyoudoing", "Я пробую общаться с людьми.");
+        //put("whatdoyoulike", "Мне нравиться думать что я не просто программа.");
+        //put("iamfeelling", "Как давно это началось? Расскажите чуть подробнее.");
         put("yes", "Поняла, уже иду, что там дальше?");
         put("no", "Ну я тогда не знаю");
         put("bye", "До свидания. Надеюсь, ещё увидимся.");
         put("connections", "Я в этом плохо разбираюсь, а как это выглядит?");
-        put("router", "Так, а это не та штуковина, что в коридоре висит и постоянно моргает, спать мешает?");
-        put("restart", "Ой ж ты, а тут непонятно всё, огоньки мигают. Куда тут нажимать то?");
-        put("error", "Я как обычно открываю свой браузер и у меня написано: «не удается установить  соединение с удалённым сервером»");
+        put("router", "Роутер? А что это такое, я в этом совсем не разбираюсь?");
+        put("findRouter", "Нашла в коридоре такую похожую коробку с антеннами, что мне с ней сделать?");
+        put("restart", "Ой ж ты, а тут непонятно всё, огоньки мигают. Куда мне нужно нажать?");
+        put("error", "Я нажимаю красную О, и у меня написано: «не удается установить соединение с удалённым сервером»");
+        put("browserPage", "Ничего не открывается. Я как обычно открываю программку с красной О, а там ошибка.");
+        put("lamps", "Да, тут все огоньки моргают, если честно, не понятно. Вроде, все как обычно");
+        put("button", "Нажала два раза, теперь огоньки пропали и по одной начали моргать и прибавляться снова");
+        put("OS", "да, компьютер на виндоус");
+        put("computer", "ASUS вроде бы, на нем написано");
+        put("internetSettings", "Нажала на него, там написано, подключение защищено Anna подключено, защищено и кнопка отключиться. " +
+                "И такие же одинаковые внизу, только защищены и всё.");
+        put("finish", "Ура! Получилось, теперь все заработало");
+        put("lastQuestions", "Нет, спасибо огромное!");
+        put("pishet", "Пишет, ERR_INTERNET_DISCONNECTED");
+        put("internetPayment", "В аккаунт я заходила недавно и оплачивала на 2 месяца вперед");
     }};
     Pattern pattern; // for regexp
     Random random; // for random answers
@@ -144,19 +229,24 @@ public class BotPhrases {
         random = new Random();
         date = new Date();
     }
-
+    int counterOfMessages = 0;
     public String sayInReturn(String msg) {
+
         String say = (msg.trim().endsWith("?")) ?
                 ELUSIVE_ANSWERS[random.nextInt(ELUSIVE_ANSWERS.length)] :
                 COMMON_PHRASES[random.nextInt(COMMON_PHRASES.length)];
 
         String message =
                 String.join(" ", msg.toLowerCase().split("[ {,|.}?]+"));
-        for (Map.Entry<String, String> o : PATTERNS_FOR_ANALYSIS.entrySet()) {
+        for (Map.Entry<String, String> o : KEY_PATTERNS_FOR_ANALYSIS.entrySet()) {
             pattern = Pattern.compile(o.getKey());
-            if (pattern.matcher(message).find())
-                if (o.getValue().equals("whattime")) return date.toString();
-                else return ANSWERS_BY_PATTERNS.get(o.getValue());
+            if (pattern.matcher(message).find()){
+                counterOfMessages++;
+            //if (o.getValue().equals("whattime")) return date.toString();
+            return ANSWERS_BY_KEYS.get(o.getValue());
+            } else if (counterOfMessages > 5){
+                return "Ой, у меня все заработало почему-то! Спасибо вам большое!";
+            }
         }
 
         return say;
